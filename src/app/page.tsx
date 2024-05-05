@@ -1,15 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import NavBar from "./components/NavBar";
+
+
 import Header from "./components/Header";
 import Card from "./components/Card";
 
+// 6JLaoQk3Zt737VJd
 export default function Home() {
   return (
-    <main className="bg-gray-100 min-h-screen w-screen">
-  <main className="max-w-screen-2xl m-auto bg-white">
-  
-    <NavBar/>
+   
   
     <main>
   
@@ -21,8 +18,7 @@ export default function Home() {
       </div>
       {/* CARDS */}
     </main>
-  </main>
-</main>
+
 
   );
 }

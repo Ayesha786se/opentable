@@ -1,4 +1,4 @@
-import NavBar from "@/app/components/NavBar";
+
 import React from "react";
 import Header from "./components/Header";
 import RestrurantNavBar from "./components/RestrurantNavBar";
@@ -11,12 +11,8 @@ import ReviewCard from "./components/ReviewCard";
 const RestaurantDetailsPage = () => {
   return (
     <>
-      <main className="bg-gray-100 min-h-screen w-screen">
-        <main className="max-w-screen-2xl m-auto bg-white">
-          <NavBar />
-          <Header />
-          {/* DESCRIPTION PORTION */}
-          <div className="flex m-auto w-2/3 justify-between items-start 0 -mt-11">
+     
+         
             <div className="bg-white w-[70%] rounded p-3 shadow">
               <RestrurantNavBar />
               <RestrurantTitle/>
@@ -71,12 +67,10 @@ const RestaurantDetailsPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+        
           {/* DESCRIPTION PORTION */} {/* RESERVATION CARD PORTION */}{" "}
           {/* RESERVATION
     CARD PORTION */}
-        </main>
-      </main>
     </>
   );
 };

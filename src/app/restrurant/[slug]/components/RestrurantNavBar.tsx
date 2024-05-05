@@ -1,10 +1,11 @@
+import Link from 'next/link'
 import React from 'react'
 
 const RestrurantNavBar = () => {
   return (
     <nav className="flex text-reg border-b pb-2">
-          <a href="" className="mr-7"> Overview </a>
-          <a href="" className="mr-7"> Menu </a>
+          <Link href="/restrurant/cnf" className="mr-7"> Overview </Link>
+          <Link href="/restrurant/cnf/menu" className="mr-7"> Menu </Link>
         </nav>
   )
 }
