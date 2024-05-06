@@ -1,21 +1,61 @@
 
 import React from "react";
-import Header from "./components/Header";
 import RestrurantNavBar from "./components/RestrurantNavBar";
 import RestrurantTitle from "./components/RestrurantTitle";
 import RestrurantRating from "./components/RestrurantRating";
 import RestrurantDescription from "./components/RestrurantDescription";
 import RestrurantImages from "./components/RestrurantImages";
 import ReviewCard from "./components/ReviewCard";
+import { PrismaClient } from "@prisma/client";
 
-const RestaurantDetailsPage = () => {
+
+// import Error from "next/error";
+
+
+// const prisma = new PrismaClient
+const prisma = new PrismaClient();
+interface Props{
+  params:{
+    slug:string
+  }
+}
+
+interface RestrurantType{
+
+    id: number;
+    name: string;
+    images: string[];
+    description: string;
+
+}
+const fetchRestrurant=async(slug:string):Promise<RestrurantType>=>{
+  const restrurant= await prisma.restaurant.findUnique({
+    where:{
+      slug
+    },
+    select:{
+      id:true,
+      name:true,
+      description:true,
+      images:true
+
+    }
+  });
+  if(!restrurant){
+    throw new Error('error'+slug);
+  }
+  return restrurant
+}
+
+const RestaurantDetailsPage =async ({params}:Props) => {
+  const restrurant=await fetchRestrurant(params.slug)
   return (
     <>
      
          
             <div className="bg-white w-[70%] rounded p-3 shadow">
               <RestrurantNavBar />
-              <RestrurantTitle/>
+              <RestrurantTitle title={restrurant.name}/>
               <RestrurantRating />
 
               <RestrurantDescription />
