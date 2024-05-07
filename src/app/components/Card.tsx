@@ -11,7 +11,7 @@ interface Props {
 const Card = ({restrurant}:Props) => {
   return (
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
-      <Link href={`/restrurant/cnf ${restrurant.slug}`}>
+      <Link href={`/restrurant/${restrurant.slug}`}>
       <img
         src={restrurant.main_image}
         alt=""

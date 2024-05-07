@@ -26,6 +26,7 @@ interface RestrurantType{
     name: string;
     images: string[];
     description: string;
+    slug:string
 
 }
 const fetchRestrurant=async(slug:string):Promise<RestrurantType>=>{
@@ -37,12 +38,13 @@ const fetchRestrurant=async(slug:string):Promise<RestrurantType>=>{
       id:true,
       name:true,
       description:true,
-      images:true
+      images:true,
+      slug:true
 
     }
   });
   if(!restrurant){
-    throw new Error('error'+slug);
+    throw new Error
   }
   return restrurant
 }
@@ -54,13 +56,13 @@ const RestaurantDetailsPage =async ({params}:Props) => {
      
          
             <div className="bg-white w-[70%] rounded p-3 shadow">
-              <RestrurantNavBar />
+              <RestrurantNavBar slug={restrurant.slug}/>
               <RestrurantTitle title={restrurant.name}/>
               <RestrurantRating />
 
-              <RestrurantDescription />
+              <RestrurantDescription description={restrurant.description}/>
 
-              <RestrurantImages />
+              <RestrurantImages  images={restrurant.images}/>
               {/* REVIEWS */}
               <div>
                 <h1 className="font-bold text-3xl mt-10 mb-7 borber-b pb-5">
