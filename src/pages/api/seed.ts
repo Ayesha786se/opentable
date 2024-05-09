@@ -11,11 +11,12 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-    
+  await prisma.review.deleteMany();
   await prisma.item.deleteMany();
   await prisma.restaurant.deleteMany();
   await prisma.location.deleteMany();
   await prisma.region.deleteMany();
+  await prisma.user.deleteMany();
   
 
   await prisma.location.createMany({
@@ -1039,4 +1040,198 @@ export default async function handler(
     ],
   });
   res.status(200).json({ name: "hello" });
+
+
+
+  const userEmma = await prisma.user.create({
+    data: {
+      first_name: "Emma",
+      last_name: "Grout",
+      email: "emma@gmail.com",
+      city: "Ottawa",
+      phone: "91234789740",
+      password: "qwerty",
+    }
+  });
+  
+  const userJohn = await prisma.user.create({
+    data: {
+      first_name: "John",
+      last_name: "Smith",
+      email: "john@example.com",
+      city: "New York",
+      phone: "1234567890",
+      password: "password",
+    }
+  });
+  
+  const userAlice = await prisma.user.create({
+    data: {
+      first_name: "Alice",
+      last_name: "Johnson",
+      email: "alice@example.com",
+      city: "Los Angeles",
+      phone: "9876543210",
+      password: "pass123",
+    }
+  });
+  
+  const userMichael = await prisma.user.create({
+    data: {
+      first_name: "Michael",
+      last_name: "Brown",
+      email: "michael@example.com",
+      city: "Chicago",
+      phone: "5678901234",
+      password: "abcd1234",
+    }
+  });
+  
+  const userSophia = await prisma.user.create({
+    data: {
+      first_name: "Sophia",
+      last_name: "Davis",
+      email: "sophia@example.com",
+      city: "Houston",
+      phone: "8765432109",
+      password: "passpass",
+    }
+  });
+  
+  const userDavid = await prisma.user.create({
+    data: {
+      first_name: "David",
+      last_name: "Martinez",
+      email: "david@example.com",
+      city: "Miami",
+      phone: "3456789012",
+      password: "david123",
+    }
+  });
+  
+  const userOlivia = await prisma.user.create({
+    data: {
+      first_name: "Olivia",
+      last_name: "Wilson",
+      email: "olivia@example.com",
+      city: "Dallas",
+      phone: "6543210987",
+      password: "olivia456",
+    }
+  });
+  
+  const userJames = await prisma.user.create({
+    data: {
+      first_name: "James",
+      last_name: "Taylor",
+      email: "james@example.com",
+      city: "Seattle",
+      phone: "2109876543",
+      password: "james789",
+    }
+  });
+  
+  const userEmily = await prisma.user.create({
+    data: {
+      first_name: "Emily",
+      last_name: "Anderson",
+      email: "emily@example.com",
+      city: "San Francisco",
+      phone: "4321098765",
+      password: "password123",
+    }
+  });
+  
+  const userDaniel = await prisma.user.create({
+    data: {
+      first_name: "Daniel",
+      last_name: "Thomas",
+      email: "daniel@example.com",
+      city: "Boston",
+      phone: "1098765432",
+      password: "daniel456",
+    }
+  });
+
+  await prisma.review.createMany({
+    data:[
+      {  
+      first_name:"Emma",
+      last_name:"grout",
+      text:"very nice place to visit, the service was fast and friendly. the food was amazing",
+      rating:4,
+      restaurant_id:pukkaId,
+      user_Id:userEmma.id,
+      },
+      {
+        first_name: "John",
+        last_name: "Smith",
+        text: "Had an amazing time! The food was divine, and the live music added to the ambiance. Highly recommend!",
+        rating: 5,
+        restaurant_id: ottawaLocationId,
+        user_Id: userJohn.id
+      },
+      {
+        first_name: "Alice",
+        last_name: "Johnson",
+        text: "Average experience. The food was decent, but nothing extraordinary. The staff seemed overwhelmed.",
+        rating: 3,
+        restaurant_id: coconutLagoonId,
+        user_Id: userAlice.id
+      },
+      {
+        first_name: "Michael",
+        last_name: "Brown",
+        text: "Absolutely loved it! The flavors were out of this world, and the presentation was stunning.",
+        rating: 5,
+        restaurant_id: canoRestaurantId,
+        user_Id: userMichael.id
+      },
+      {
+        first_name: "Sophia",
+        last_name: "Davis",
+        text: "Disappointing. The food was bland, and the service was slow. Won't be coming back.",
+        rating: 2,
+        restaurant_id: sofiaId,
+        user_Id: userSophia.id
+      },
+      {
+        first_name: "David",
+        last_name: "Martinez",
+        text: "Had a wonderful time with friends. The food was delicious, and the staff were attentive.",
+        rating: 4,
+        restaurant_id: adrakYorkvilleId,
+        user_Id: userDavid.id
+      },
+      {
+        first_name: "Olivia",
+        last_name: "Wilson",
+        text: "Meh. The food was okay, but nothing special. Expected more for the price.",
+        rating: 3,
+        restaurant_id: bluRistoranteId,
+        user_Id: userOlivia.id
+      },
+      {
+        first_name: "James",
+        last_name: "Taylor",
+        text: "Decent experience overall. The food was good, but the service could have been faster.",
+        rating: 3,
+        restaurant_id: mexicanRegionId,
+        user_Id: userJames.id
+      },
+      {
+        first_name: "Emily",
+        last_name: "Anderson",
+        text: "Absolutely terrible. The food was cold, and the staff were rude. Avoid at all costs.",
+        rating: 1,
+        restaurant_id: kamasutraIndianId,
+        user_Id: userEmily.id
+      }
+    ]
+  })
+  
 }
+
+
+
+
