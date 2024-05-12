@@ -3,8 +3,7 @@ import Header from "./component/Header";
 import SideBar from "./component/SideBar";
 import RestrurantCard from "./component/RestrurantCard";
 import { PRICE, PrismaClient } from "@prisma/client";
-import { equal } from "assert";
-import SearchBox from "../components/Search";
+
 
 const prisma = new PrismaClient();
 
@@ -56,6 +55,8 @@ const fetchRestraurant = (searchParams: searchParams) => {
     slug: true,
     main_image: true,
     price: true,
+    reviews:true
+   
   };
 
   // as we have defined where obj no need of this 

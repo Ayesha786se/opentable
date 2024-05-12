@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -23,14 +17,14 @@ model Restaurant {
   close_time  String
   slug        String   @unique
   price       PRICE
-  items       Item[]
   location_id Int
-  location    Location @relation(fields: [location_id], references: [id])
   region_id   Int
-  region      Region   @relation(fields: [region_id], references: [id])
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
-  reviews      Review[]
+  items       Item[]
+  location    Location @relation(fields: [location_id], references: [id])
+  region      Region   @relation(fields: [region_id], references: [id])
+  reviews     Review[]
 }
 
 model Item {
@@ -39,31 +33,25 @@ model Item {
   price         String
   description   String
   restaurant_id Int
-  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
   created_at    DateTime   @default(now())
   updated_at    DateTime   @updatedAt
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
 }
 
 model Location {
   id          Int          @id @default(autoincrement())
   name        String
-  restaurants Restaurant[]
   created_at  DateTime     @default(now())
   updated_at  DateTime     @updatedAt
+  restaurants Restaurant[]
 }
 
 model Region {
   id          Int          @id @default(autoincrement())
   name        String
-  restaurants Restaurant[]
   created_at  DateTime     @default(now())
   updated_at  DateTime     @updatedAt
-}
-
-enum PRICE {
-  CHEAP
-  REGULAR
-  EXPENSIVE
+  restaurants Restaurant[]
 }
 
 model Review {
@@ -73,12 +61,11 @@ model Review {
   text          String
   rating        Float
   restaurant_id Int
-  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
   user_Id       Int
-  user          User       @relation(fields: [user_Id], references: [id])
   created_at    DateTime   @default(now())
   updated_at    DateTime   @updatedAt
-  
+  restaurant    Restaurant @relation(fields: [restaurant_id], references: [id])
+  user          User       @relation(fields: [user_Id], references: [id])
 }
 
 model User {
@@ -91,5 +78,11 @@ model User {
   password   String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  reviews     Review[]
+  reviews    Review[]
+}
+
+enum PRICE {
+  CHEAP
+  REGULAR
+  EXPENSIVE
 }

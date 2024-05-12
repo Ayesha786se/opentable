@@ -6,7 +6,7 @@ import RestrurantRating from "./components/RestrurantRating";
 import RestrurantDescription from "./components/RestrurantDescription";
 import RestrurantImages from "./components/RestrurantImages";
 import ReviewCard from "./components/ReviewCard";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Review } from "@prisma/client";
 
 
 // import Error from "next/error";
@@ -27,6 +27,7 @@ interface RestrurantType{
     images: string[];
     description: string;
     slug:string
+    reviews:Review[]
 
 }
 const fetchRestrurant=async(slug:string):Promise<RestrurantType>=>{
@@ -39,7 +40,8 @@ const fetchRestrurant=async(slug:string):Promise<RestrurantType>=>{
       name:true,
       description:true,
       images:true,
-      slug:true
+      slug:true,
+      reviews:true
 
     }
   });
@@ -58,7 +60,7 @@ const RestaurantDetailsPage =async ({params}:Props) => {
             <div className="bg-white w-[70%] rounded p-3 shadow">
               <RestrurantNavBar slug={restrurant.slug}/>
               <RestrurantTitle title={restrurant.name}/>
-              <RestrurantRating />
+              <RestrurantRating reviews={restrurant.reviews}/>
 
               <RestrurantDescription description={restrurant.description}/>
 
@@ -66,10 +68,12 @@ const RestaurantDetailsPage =async ({params}:Props) => {
               {/* REVIEWS */}
               <div>
                 <h1 className="font-bold text-3xl mt-10 mb-7 borber-b pb-5">
-                  What 100 people are saying
+                  What {restrurant.reviews.length} {restrurant.reviews.length===1? "person":"people"} are saying
                 </h1>
                 <div>
-                  <ReviewCard />
+                  {restrurant.reviews.map((review)=>{
+                    return <ReviewCard review ={review}/>
+                  })}
                 </div>
               </div>
               {/* REVIEWS */}

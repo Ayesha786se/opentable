@@ -1142,16 +1142,6 @@ export default async function handler(
     }
   });
   
-  const userDaniel = await prisma.user.create({
-    data: {
-      first_name: "Daniel",
-      last_name: "Thomas",
-      email: "daniel@example.com",
-      city: "Boston",
-      phone: "1098765432",
-      password: "daniel456",
-    }
-  });
 
   await prisma.review.createMany({
     data:[
@@ -1160,7 +1150,7 @@ export default async function handler(
       last_name:"grout",
       text:"very nice place to visit, the service was fast and friendly. the food was amazing",
       rating:4,
-      restaurant_id:pukkaId,
+      restaurant_id:vivaanId,
       user_Id:userEmma.id,
       },
       {
@@ -1168,7 +1158,7 @@ export default async function handler(
         last_name: "Smith",
         text: "Had an amazing time! The food was divine, and the live music added to the ambiance. Highly recommend!",
         rating: 5,
-        restaurant_id: ottawaLocationId,
+        restaurant_id: RamaKrishnaId,
         user_Id: userJohn.id
       },
       {
@@ -1184,7 +1174,7 @@ export default async function handler(
         last_name: "Brown",
         text: "Absolutely loved it! The flavors were out of this world, and the presentation was stunning.",
         rating: 5,
-        restaurant_id: canoRestaurantId,
+        restaurant_id: lastTrainToDelhiId,
         user_Id: userMichael.id
       },
       {
@@ -1192,7 +1182,7 @@ export default async function handler(
         last_name: "Davis",
         text: "Disappointing. The food was bland, and the service was slow. Won't be coming back.",
         rating: 2,
-        restaurant_id: sofiaId,
+        restaurant_id: adrakYorkvilleId,
         user_Id: userSophia.id
       },
       {
@@ -1200,7 +1190,23 @@ export default async function handler(
         last_name: "Martinez",
         text: "Had a wonderful time with friends. The food was delicious, and the staff were attentive.",
         rating: 4,
-        restaurant_id: adrakYorkvilleId,
+        restaurant_id: curryishTavernId,
+        user_Id: userDavid.id
+      },
+      {
+        first_name: "David",
+        last_name: "Martinez",
+        text: "Had a wonderful time with friends. The food was delicious, and the staff were attentive.",
+        rating: 4,
+        restaurant_id: curryishTavernId,
+        user_Id: userDavid.id
+      },
+      {
+        first_name: "David",
+        last_name: "Martinez",
+        text: "Had a wonderful time with friends. The food was delicious, and the staff were attentive.",
+        rating: 4,
+        restaurant_id: curryishTavernId,
         user_Id: userDavid.id
       },
       {
@@ -1208,7 +1214,7 @@ export default async function handler(
         last_name: "Wilson",
         text: "Meh. The food was okay, but nothing special. Expected more for the price.",
         rating: 3,
-        restaurant_id: bluRistoranteId,
+        restaurant_id: utsavId,
         user_Id: userOlivia.id
       },
       {
@@ -1216,7 +1222,7 @@ export default async function handler(
         last_name: "Taylor",
         text: "Decent experience overall. The food was good, but the service could have been faster.",
         rating: 3,
-        restaurant_id: mexicanRegionId,
+        restaurant_id: pukkaId,
         user_Id: userJames.id
       },
       {
@@ -1226,7 +1232,40 @@ export default async function handler(
         rating: 1,
         restaurant_id: kamasutraIndianId,
         user_Id: userEmily.id
-      }
+      },
+      {
+        first_name: "Emily",
+        last_name: "Anderson",
+        text: "Absolutely terrible. The food was cold, and the staff were rude. Avoid at all costs.",
+        rating: 1,
+        restaurant_id: eldoradoTacoId,
+        user_Id: userEmily.id
+      },
+      {
+        first_name: "Emily",
+        last_name: "Anderson",
+        text: "Absolutely terrible. The food was cold, and the staff were rude. Avoid at all costs.",
+        rating: 1,
+        restaurant_id: sofiaId,
+        user_Id: userEmily.id
+      },
+      {
+        first_name: "Emily",
+        last_name: "Anderson",
+        text: "Absolutely terrible. The food was cold, and the staff were rude. Avoid at all costs.",
+        rating: 1,
+        restaurant_id: stelvioId,
+        user_Id: userEmily.id
+      },
+      {
+        first_name: "Alice",
+        last_name: "Johnson",
+        text: "Average experience. The food was decent, but nothing extraordinary. The staff seemed overwhelmed.",
+        rating: 3,
+        restaurant_id: RamaKrishnaId,
+        user_Id: userAlice.id
+      },
+      
     ]
   })
   
